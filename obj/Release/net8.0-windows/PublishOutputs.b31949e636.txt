@@ -1,0 +1,7 @@
+C:\Users\wekol\Desktop\Register.exe
+C:\Users\wekol\Desktop\Register.dll
+C:\Users\wekol\Desktop\Register.deps.json
+C:\Users\wekol\Desktop\Register.runtimeconfig.json
+C:\Users\wekol\Desktop\Register.pdb
+C:\Users\wekol\Desktop\MySql.Data.dll
+C:\Users\wekol\Desktop\MySql.Data.xml
