@@ -117,4 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="richTextBox1.Text" xml:space="preserve">
+    <value>0.1 Alpha  ----- date update: 26.03.2024 -----
+
+-add a RegisterForm and a AutorizationForm menu by users.
+-add a method colorChangeChanges, which change the color
+  of the button when entering the wrong password.
+-fixed the button to exit the application.
+-create a new database with the following parameters: ID, login, password.
+-add a richTextBox for add information about new update.
+-add a new button that saves the login and password the next time you enter data.
+-add button, that back user to the AutorizationForm
+  in a MainMenu and a RegisterForm
+</value>
+  </data>
 </root>

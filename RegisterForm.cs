@@ -32,7 +32,7 @@ namespace Register
 
             REGISTRATION_BUTTON.MouseEnter += (s, e) =>
             {
-                if (LOGIN_TEXTBOX.Text.Length >= 3 && PASS_WORD_TEXTBOX.Text.Length >= 6 && PASS_WORD_TEXTBOX.Text == passFieldCheck.Text)
+                if (LOGIN_TEXTBOX.Text.Length >= 3 && PASS_WORD_TEXTBOX.Text.Length > 6 && PASS_WORD_TEXTBOX.Text == passFieldCheck.Text)
                 {
                     REGISTRATION_BUTTON.BackColor = Color.ForestGreen;
                 }
@@ -235,9 +235,15 @@ namespace Register
             if (command.ExecuteNonQuery() == 1)
             {
                 MessageBox.Show("Вы успешно зарегистрировались!");
+                if (saveChecksBox.Checked)
+                {
+                    File.WriteAllText("C:\\Users\\wekol\\source\\repos\\new\\savedCokes\\login.txt", $"{LOGIN_TEXTBOX.Text}");
+                    File.WriteAllText("C:\\Users\\wekol\\source\\repos\\new\\savedCokes\\pass.txt", $"{PASS_WORD_TEXTBOX.Text}");
+                }
                 this.Hide();
                 AutorizationForm autorizationForm = new AutorizationForm();
                 autorizationForm.Show();
+
             }
             else
             {
@@ -274,5 +280,17 @@ namespace Register
             }
         }
         #endregion
+
+        private void Exit_Button_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void Back_Button_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            AutorizationForm autorizationForm = new AutorizationForm();
+            autorizationForm.Show();
+        }
     }
 }

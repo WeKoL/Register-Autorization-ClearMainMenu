@@ -28,14 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Exit_Button = new Button();
+            Back_Button = new Button();
             SuspendLayout();
+            // 
+            // Exit_Button
+            // 
+            Exit_Button.Location = new Point(1206, -1);
+            Exit_Button.Name = "Exit_Button";
+            Exit_Button.Size = new Size(75, 23);
+            Exit_Button.TabIndex = 3;
+            Exit_Button.Text = "Exit";
+            Exit_Button.UseVisualStyleBackColor = true;
+            Exit_Button.Click += Exit_Button_Click;
+            // 
+            // Back_Button
+            // 
+            Back_Button.Location = new Point(1133, -1);
+            Back_Button.Name = "Back_Button";
+            Back_Button.Size = new Size(75, 23);
+            Back_Button.TabIndex = 12;
+            Back_Button.Text = "Back";
+            Back_Button.UseVisualStyleBackColor = true;
+            Back_Button.Click += Back_Button_Click;
             // 
             // MainMenuForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonShadow;
-            ClientSize = new Size(1280, 1024);
+            ClientSize = new Size(1280, 1001);
+            Controls.Add(Back_Button);
+            Controls.Add(Exit_Button);
             FormBorderStyle = FormBorderStyle.None;
             Name = "MainMenuForm";
             Text = "MainMenuForm";
@@ -43,5 +67,8 @@
         }
 
         #endregion
+
+        private Button Exit_Button;
+        private Button Back_Button;
     }
 }

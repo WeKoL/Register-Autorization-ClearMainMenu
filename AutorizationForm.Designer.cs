@@ -39,6 +39,7 @@
             ButtonAuthorization = new Button();
             listView1 = new ListView();
             listView2 = new ListView();
+            Exit_Button = new Button();
             panel2.SuspendLayout();
             SuspendLayout();
             // 
@@ -148,12 +149,23 @@
             listView2.TabIndex = 1;
             listView2.UseCompatibleStateImageBehavior = false;
             // 
+            // Exit_Button
+            // 
+            Exit_Button.Location = new Point(1206, -1);
+            Exit_Button.Name = "Exit_Button";
+            Exit_Button.Size = new Size(75, 23);
+            Exit_Button.TabIndex = 2;
+            Exit_Button.Text = "Exit";
+            Exit_Button.UseVisualStyleBackColor = true;
+            Exit_Button.Click += Exit_Button_Click;
+            // 
             // AutorizationForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveBorder;
-            ClientSize = new Size(1280, 1024);
+            ClientSize = new Size(1280, 1001);
+            Controls.Add(Exit_Button);
             Controls.Add(listView2);
             Controls.Add(listView1);
             Controls.Add(panel2);
@@ -161,6 +173,7 @@
             FormBorderStyle = FormBorderStyle.None;
             ImeMode = ImeMode.On;
             Name = "AutorizationForm";
+            StartPosition = FormStartPosition.Manual;
             Text = "AutoRider";
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
@@ -181,5 +194,6 @@
         private LinkLabel linkRegis;
         private CheckBox checkBox3;
         private Label label1;
+        private Button Exit_Button;
     }
 }

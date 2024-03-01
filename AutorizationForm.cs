@@ -1,3 +1,5 @@
+using Microsoft.VisualBasic.ApplicationServices;
+using Microsoft.VisualBasic.Logging;
 using MySql.Data.MySqlClient;
 using Register;
 using SqlDB;
@@ -13,6 +15,15 @@ namespace Register
         {
             this.Controls.Clear();
             this.InitializeComponent();
+            try
+            {
+                loginField.Text = File.ReadAllText("C:\\Users\\wekol\\source\\repos\\new\\savedCokes\\login.txt");
+                passField.Text = File.ReadAllText("C:\\Users\\wekol\\source\\repos\\new\\savedCokes\\pass.txt");
+            }
+            catch
+            {
+                return;
+            }
             loginField.GotFocus += textBox1_GotFocus;
             loginField.MouseUp += textBox1_MouseUp;
             loginField.Leave += textBox1_Leave;
@@ -21,7 +32,7 @@ namespace Register
             passField.Leave += textBox2_Leave;
             ButtonAuthorization.MouseEnter += (s, e) =>
             {
-                if (loginField.Text.Length >= 3 && passField.Text.Length >= 6)
+                if (loginField.Text.Length >= 3 && passField.Text.Length > 6)
                 {
                     ButtonAuthorization.BackColor = Color.ForestGreen;
                 }
@@ -120,9 +131,19 @@ namespace Register
             adapter.SelectCommand = command;
             adapter.Fill(table);
 
-            if (table.Rows.Count > 0)
+            if (table.Rows.Count > 0 && loginUser.Length >= 3 && passUser.Length > 6)
             {
                 MessageBox.Show("Успех авторизации");
+                if (checkBox3.Checked)
+                {
+                    File.WriteAllText("C:\\Users\\wekol\\source\\repos\\new\\savedCokes\\login.txt", $"{loginField.Text}");
+                    File.WriteAllText("C:\\Users\\wekol\\source\\repos\\new\\savedCokes\\pass.txt", $"{passField.Text}");
+                }
+                else
+                {
+                    File.WriteAllText("C:\\Users\\wekol\\source\\repos\\new\\savedCokes\\login.txt", $"");
+                    File.WriteAllText("C:\\Users\\wekol\\source\\repos\\new\\savedCokes\\pass.txt", $"");
+                }
                 this.Hide();
                 MainMenuForm mainMenuForm = new MainMenuForm();
                 mainMenuForm.Show();
@@ -138,6 +159,11 @@ namespace Register
             this.Hide();
             RegisterForm register = new RegisterForm();
             register.Show();
+        }
+
+        private void Exit_Button_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

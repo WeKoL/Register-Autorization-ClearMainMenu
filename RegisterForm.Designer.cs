@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegisterForm));
             panel1 = new Panel();
             helpPass = new Label();
             helpLogin = new Label();
@@ -39,8 +40,13 @@
             LOGIN_TEXTBOX = new TextBox();
             REGISTRATION_BUTTON = new Button();
             panel3 = new Panel();
+            richTextBox1 = new RichTextBox();
+            label1 = new Label();
             panel2 = new Panel();
+            Exit_Button = new Button();
+            Back_Button = new Button();
             panel1.SuspendLayout();
+            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -49,11 +55,11 @@
             panel1.Controls.Add(helpPass);
             panel1.Controls.Add(helpLogin);
             panel1.Controls.Add(maxSymbolsLabel);
-            panel1.Controls.Add(PASS_WORD_TEXTBOX);
             panel1.Controls.Add(registerLabel);
-            panel1.Controls.Add(saveChecksBox);
-            panel1.Controls.Add(passFieldCheck);
             panel1.Controls.Add(LOGIN_TEXTBOX);
+            panel1.Controls.Add(passFieldCheck);
+            panel1.Controls.Add(PASS_WORD_TEXTBOX);
+            panel1.Controls.Add(saveChecksBox);
             panel1.Controls.Add(REGISTRATION_BUTTON);
             panel1.Location = new Point(520, 12);
             panel1.Name = "panel1";
@@ -171,34 +177,79 @@
             // panel3
             // 
             panel3.BackColor = SystemColors.ButtonHighlight;
+            panel3.Controls.Add(richTextBox1);
+            panel3.Controls.Add(label1);
             panel3.Location = new Point(25, 12);
             panel3.Name = "panel3";
             panel3.Size = new Size(480, 900);
             panel3.TabIndex = 8;
             // 
+            // richTextBox1
+            // 
+            richTextBox1.Location = new Point(17, 40);
+            richTextBox1.Name = "richTextBox1";
+            richTextBox1.Size = new Size(451, 843);
+            richTextBox1.TabIndex = 1;
+            richTextBox1.Text = resources.GetString("richTextBox1.Text");
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Microsoft Sans Serif", 17F);
+            label1.Location = new Point(115, 8);
+            label1.Name = "label1";
+            label1.Size = new Size(237, 29);
+            label1.TabIndex = 0;
+            label1.Text = "Список обновлений";
+            // 
             // panel2
             // 
             panel2.BackColor = SystemColors.ButtonHighlight;
-            panel2.Location = new Point(772, 12);
+            panel2.Location = new Point(773, 12);
             panel2.Name = "panel2";
             panel2.Size = new Size(480, 900);
             panel2.TabIndex = 9;
+            // 
+            // Exit_Button
+            // 
+            Exit_Button.Location = new Point(1206, -1);
+            Exit_Button.Name = "Exit_Button";
+            Exit_Button.Size = new Size(75, 23);
+            Exit_Button.TabIndex = 10;
+            Exit_Button.Text = "Exit";
+            Exit_Button.UseVisualStyleBackColor = true;
+            Exit_Button.Click += Exit_Button_Click;
+            // 
+            // Back_Button
+            // 
+            Back_Button.Location = new Point(1133, -1);
+            Back_Button.Name = "Back_Button";
+            Back_Button.Size = new Size(75, 23);
+            Back_Button.TabIndex = 11;
+            Back_Button.Text = "Back";
+            Back_Button.UseVisualStyleBackColor = true;
+            Back_Button.Click += Back_Button_Click;
             // 
             // RegisterForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonShadow;
-            ClientSize = new Size(1280, 1024);
+            ClientSize = new Size(1280, 1001);
+            Controls.Add(Back_Button);
+            Controls.Add(Exit_Button);
             Controls.Add(panel2);
             Controls.Add(panel3);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             ImeMode = ImeMode.On;
             Name = "RegisterForm";
+            StartPosition = FormStartPosition.Manual;
             Text = "RegisterForm";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -216,5 +267,9 @@
         private Label maxSymbolsLabel;
         private Label helpLogin;
         private Label helpPass;
+        private Button Exit_Button;
+        private Button Back_Button;
+        private Label label1;
+        private RichTextBox richTextBox1;
     }
 }

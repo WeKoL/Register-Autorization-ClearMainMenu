@@ -16,5 +16,17 @@ namespace Register
         {
             InitializeComponent();
         }
+
+        private void Exit_Button_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void Back_Button_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            AutorizationForm autorizationForm = new AutorizationForm();
+            autorizationForm.Show();
+        }
     }
 }

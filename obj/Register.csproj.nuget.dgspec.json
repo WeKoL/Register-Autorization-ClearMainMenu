@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\wekol\\source\\repos\\File Manager App\\Register\\Register.csproj": {}
+    "C:\\Users\\wekol\\source\\repos\\new\\Register.csproj": {}
   },
   "projects": {
-    "C:\\Users\\wekol\\source\\repos\\File Manager App\\Register\\Register.csproj": {
+    "C:\\Users\\wekol\\source\\repos\\new\\Register.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\wekol\\source\\repos\\File Manager App\\Register\\Register.csproj",
+        "projectUniqueName": "C:\\Users\\wekol\\source\\repos\\new\\Register.csproj",
         "projectName": "Register",
-        "projectPath": "C:\\Users\\wekol\\source\\repos\\File Manager App\\Register\\Register.csproj",
+        "projectPath": "C:\\Users\\wekol\\source\\repos\\new\\Register.csproj",
         "packagesPath": "C:\\Users\\wekol\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\wekol\\source\\repos\\File Manager App\\Register\\obj\\",
+        "outputPath": "C:\\Users\\wekol\\source\\repos\\new\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
