@@ -4,6 +4,7 @@ using MySql.Data.MySqlClient;
 using Register;
 using SqlDB;
 using System.Data;
+using System.IO;
 using System.Reflection.Emit;
 using System.Windows.Forms;
 
@@ -15,15 +16,9 @@ namespace Register
         {
             this.Controls.Clear();
             this.InitializeComponent();
-            try
-            {
-                loginField.Text = File.ReadAllText("C:\\Users\\wekol\\source\\repos\\new\\savedCokes\\login.txt");
-                passField.Text = File.ReadAllText("C:\\Users\\wekol\\source\\repos\\new\\savedCokes\\pass.txt");
-            }
-            catch
-            {
-                return;
-            }
+            String pass;
+            string login;
+            
             loginField.GotFocus += textBox1_GotFocus;
             loginField.MouseUp += textBox1_MouseUp;
             loginField.Leave += textBox1_Leave;
@@ -45,6 +40,29 @@ namespace Register
             {
                 ButtonAuthorization.BackColor = Color.FromKnownColor(KnownColor.Red);
             };
+            try
+            {
+                string completedPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "completed");
+                Directory.CreateDirectory(completedPath);
+                string filePathforPass = Path.Combine(completedPath, "Pass.bat");
+                string filePathforLogin = Path.Combine(completedPath, "Login.bat");
+                //Pass the file path and file name to the StreamReader constructor
+                StreamReader passReader = new StreamReader(filePathforPass);
+                StreamReader loginReader = new StreamReader(filePathforLogin);
+                //Read the first line of text
+                pass = passReader.ReadLine();
+                login = loginReader.ReadLine();
+                //Continue to read until you reach end of file
+                passField.Text = pass;
+                loginField.Text = login;
+                //close the file
+                passReader.Close();
+                loginReader.Close();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Exception: " + e.Message);
+            }
         }
         #region Выделение логин и пороль
         bool alreadyFocused;
@@ -136,13 +154,33 @@ namespace Register
                 MessageBox.Show("Успех авторизации");
                 if (checkBox3.Checked)
                 {
-                    File.WriteAllText("C:\\Users\\wekol\\source\\repos\\new\\savedCokes\\login.txt", $"{loginField.Text}");
-                    File.WriteAllText("C:\\Users\\wekol\\source\\repos\\new\\savedCokes\\pass.txt", $"{passField.Text}");
+                    string completedPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "completed");
+                    Directory.CreateDirectory(completedPath);
+                    string filePathforPass = Path.Combine(completedPath, "Pass.bat");
+                    string filePathforLogin = Path.Combine(completedPath, "Login.bat");
+                    using (StreamWriter writer = new StreamWriter(filePathforPass))
+                    {
+                        writer.Write(passField.Text);
+                    }
+                    using (StreamWriter writer = new StreamWriter(filePathforLogin))
+                    {
+                        writer.Write(loginField.Text);
+                    }
                 }
                 else
                 {
-                    File.WriteAllText("C:\\Users\\wekol\\source\\repos\\new\\savedCokes\\login.txt", $"");
-                    File.WriteAllText("C:\\Users\\wekol\\source\\repos\\new\\savedCokes\\pass.txt", $"");
+                    string completedPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "completed");
+                    Directory.CreateDirectory(completedPath);
+                    string filePathforPass = Path.Combine(completedPath, "Pass.bat");
+                    string filePathforLogin = Path.Combine(completedPath, "Login.bat");
+                    using (StreamWriter writer = new StreamWriter(filePathforPass))
+                    {
+                        writer.Write("");
+                    }
+                    using (StreamWriter writer = new StreamWriter(filePathforLogin))
+                    {
+                        writer.Write("");
+                    }
                 }
                 this.Hide();
                 MainMenuForm mainMenuForm = new MainMenuForm();

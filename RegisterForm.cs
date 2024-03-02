@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace Register
 {
@@ -237,8 +238,33 @@ namespace Register
                 MessageBox.Show("Вы успешно зарегистрировались!");
                 if (saveChecksBox.Checked)
                 {
-                    File.WriteAllText("C:\\Users\\wekol\\source\\repos\\new\\savedCokes\\login.txt", $"{LOGIN_TEXTBOX.Text}");
-                    File.WriteAllText("C:\\Users\\wekol\\source\\repos\\new\\savedCokes\\pass.txt", $"{PASS_WORD_TEXTBOX.Text}");
+                    string completedPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "completed");
+                    Directory.CreateDirectory(completedPath);
+                    string filePathforPass = Path.Combine(completedPath, "Pass.bat");
+                    string filePathforLogin = Path.Combine(completedPath, "Login.bat");
+                    using (StreamWriter writer = new StreamWriter(filePathforLogin))
+                    {
+                        writer.Write(LOGIN_TEXTBOX.Text);
+                    }
+                    using (StreamWriter writer = new StreamWriter(filePathforPass))
+                    {
+                        writer.Write(PASS_WORD_TEXTBOX.Text);
+                    }
+                }
+                else
+                {
+                    string completedPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "completed");
+                    Directory.CreateDirectory(completedPath);
+                    string filePathforPass = Path.Combine(completedPath, "Pass.bat");
+                    string filePathforLogin = Path.Combine(completedPath, "Login.bat");
+                    using (StreamWriter writer = new StreamWriter(filePathforLogin))
+                    {
+                        writer.Write("");
+                    }
+                    using (StreamWriter writer = new StreamWriter(filePathforPass))
+                    {
+                        writer.Write("");
+                    }
                 }
                 this.Hide();
                 AutorizationForm autorizationForm = new AutorizationForm();

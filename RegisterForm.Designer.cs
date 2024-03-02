@@ -30,14 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegisterForm));
             panel1 = new Panel();
+            saveChecksBox = new CheckBox();
             helpPass = new Label();
             helpLogin = new Label();
             maxSymbolsLabel = new Label();
-            PASS_WORD_TEXTBOX = new TextBox();
             registerLabel = new Label();
-            saveChecksBox = new CheckBox();
-            passFieldCheck = new TextBox();
             LOGIN_TEXTBOX = new TextBox();
+            passFieldCheck = new TextBox();
+            PASS_WORD_TEXTBOX = new TextBox();
             REGISTRATION_BUTTON = new Button();
             panel3 = new Panel();
             richTextBox1 = new RichTextBox();
@@ -45,13 +45,17 @@
             panel2 = new Panel();
             Exit_Button = new Button();
             Back_Button = new Button();
+            pictureBox1 = new PictureBox();
             panel1.SuspendLayout();
             panel3.SuspendLayout();
+            panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = SystemColors.ButtonHighlight;
+            panel1.Controls.Add(saveChecksBox);
             panel1.Controls.Add(helpPass);
             panel1.Controls.Add(helpLogin);
             panel1.Controls.Add(maxSymbolsLabel);
@@ -59,12 +63,24 @@
             panel1.Controls.Add(LOGIN_TEXTBOX);
             panel1.Controls.Add(passFieldCheck);
             panel1.Controls.Add(PASS_WORD_TEXTBOX);
-            panel1.Controls.Add(saveChecksBox);
             panel1.Controls.Add(REGISTRATION_BUTTON);
             panel1.Location = new Point(520, 12);
             panel1.Name = "panel1";
             panel1.Size = new Size(236, 380);
             panel1.TabIndex = 4;
+            // 
+            // saveChecksBox
+            // 
+            saveChecksBox.AutoSize = true;
+            saveChecksBox.BackColor = SystemColors.ControlLight;
+            saveChecksBox.Checked = true;
+            saveChecksBox.CheckState = CheckState.Checked;
+            saveChecksBox.Location = new Point(13, 210);
+            saveChecksBox.Name = "saveChecksBox";
+            saveChecksBox.Size = new Size(113, 19);
+            saveChecksBox.TabIndex = 12;
+            saveChecksBox.Text = "Сохранить вход";
+            saveChecksBox.UseVisualStyleBackColor = false;
             // 
             // helpPass
             // 
@@ -95,21 +111,6 @@
             maxSymbolsLabel.TabIndex = 9;
             maxSymbolsLabel.Text = "Больше 6 символов";
             // 
-            // PASS_WORD_TEXTBOX
-            // 
-            PASS_WORD_TEXTBOX.BackColor = SystemColors.Control;
-            PASS_WORD_TEXTBOX.BorderStyle = BorderStyle.FixedSingle;
-            PASS_WORD_TEXTBOX.ForeColor = SystemColors.ActiveBorder;
-            PASS_WORD_TEXTBOX.Location = new Point(13, 181);
-            PASS_WORD_TEXTBOX.MaxLength = 24;
-            PASS_WORD_TEXTBOX.Name = "PASS_WORD_TEXTBOX";
-            PASS_WORD_TEXTBOX.Size = new Size(171, 23);
-            PASS_WORD_TEXTBOX.TabIndex = 8;
-            PASS_WORD_TEXTBOX.Text = "Пороль";
-            PASS_WORD_TEXTBOX.TextChanged += textBox3_TextChanged;
-            PASS_WORD_TEXTBOX.Enter += PASS_WORD_TEXTBOX_Enter;
-            PASS_WORD_TEXTBOX.Leave += PASS_WORD_TEXTBOX_Leave;
-            // 
             // registerLabel
             // 
             registerLabel.AutoSize = true;
@@ -119,18 +120,20 @@
             registerLabel.TabIndex = 7;
             registerLabel.Text = "Регистрация";
             // 
-            // saveChecksBox
+            // LOGIN_TEXTBOX
             // 
-            saveChecksBox.AutoSize = true;
-            saveChecksBox.BackColor = SystemColors.ControlLight;
-            saveChecksBox.Checked = true;
-            saveChecksBox.CheckState = CheckState.Checked;
-            saveChecksBox.Location = new Point(14, 210);
-            saveChecksBox.Name = "saveChecksBox";
-            saveChecksBox.Size = new Size(113, 19);
-            saveChecksBox.TabIndex = 6;
-            saveChecksBox.Text = "Сохранить вход";
-            saveChecksBox.UseVisualStyleBackColor = false;
+            LOGIN_TEXTBOX.BackColor = SystemColors.Control;
+            LOGIN_TEXTBOX.BorderStyle = BorderStyle.FixedSingle;
+            LOGIN_TEXTBOX.ForeColor = SystemColors.ActiveBorder;
+            LOGIN_TEXTBOX.Location = new Point(13, 51);
+            LOGIN_TEXTBOX.MaxLength = 24;
+            LOGIN_TEXTBOX.Name = "LOGIN_TEXTBOX";
+            LOGIN_TEXTBOX.Size = new Size(171, 23);
+            LOGIN_TEXTBOX.TabIndex = 3;
+            LOGIN_TEXTBOX.Text = "Логин";
+            LOGIN_TEXTBOX.TextChanged += textBox1_TextChanged;
+            LOGIN_TEXTBOX.Enter += LOGIN_TEXTBOX_Enter;
+            LOGIN_TEXTBOX.Leave += LOGIN_TEXTBOX_Leave;
             // 
             // passFieldCheck
             // 
@@ -147,20 +150,20 @@
             passFieldCheck.Enter += passFieldCheck_Enter;
             passFieldCheck.Leave += passFieldCheck_Leave;
             // 
-            // LOGIN_TEXTBOX
+            // PASS_WORD_TEXTBOX
             // 
-            LOGIN_TEXTBOX.BackColor = SystemColors.Control;
-            LOGIN_TEXTBOX.BorderStyle = BorderStyle.FixedSingle;
-            LOGIN_TEXTBOX.ForeColor = SystemColors.ActiveBorder;
-            LOGIN_TEXTBOX.Location = new Point(13, 51);
-            LOGIN_TEXTBOX.MaxLength = 24;
-            LOGIN_TEXTBOX.Name = "LOGIN_TEXTBOX";
-            LOGIN_TEXTBOX.Size = new Size(171, 23);
-            LOGIN_TEXTBOX.TabIndex = 3;
-            LOGIN_TEXTBOX.Text = "Логин";
-            LOGIN_TEXTBOX.TextChanged += textBox1_TextChanged;
-            LOGIN_TEXTBOX.Enter += LOGIN_TEXTBOX_Enter;
-            LOGIN_TEXTBOX.Leave += LOGIN_TEXTBOX_Leave;
+            PASS_WORD_TEXTBOX.BackColor = SystemColors.Control;
+            PASS_WORD_TEXTBOX.BorderStyle = BorderStyle.FixedSingle;
+            PASS_WORD_TEXTBOX.ForeColor = SystemColors.ActiveBorder;
+            PASS_WORD_TEXTBOX.Location = new Point(13, 181);
+            PASS_WORD_TEXTBOX.MaxLength = 24;
+            PASS_WORD_TEXTBOX.Name = "PASS_WORD_TEXTBOX";
+            PASS_WORD_TEXTBOX.Size = new Size(171, 23);
+            PASS_WORD_TEXTBOX.TabIndex = 8;
+            PASS_WORD_TEXTBOX.Text = "Пороль";
+            PASS_WORD_TEXTBOX.TextChanged += textBox3_TextChanged;
+            PASS_WORD_TEXTBOX.Enter += PASS_WORD_TEXTBOX_Enter;
+            PASS_WORD_TEXTBOX.Leave += PASS_WORD_TEXTBOX_Leave;
             // 
             // REGISTRATION_BUTTON
             // 
@@ -205,6 +208,7 @@
             // panel2
             // 
             panel2.BackColor = SystemColors.ButtonHighlight;
+            panel2.Controls.Add(pictureBox1);
             panel2.Location = new Point(773, 12);
             panel2.Name = "panel2";
             panel2.Size = new Size(480, 900);
@@ -230,6 +234,16 @@
             Back_Button.UseVisualStyleBackColor = true;
             Back_Button.Click += Back_Button_Click;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(180, 600);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(300, 300);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 15;
+            pictureBox1.TabStop = false;
+            // 
             // RegisterForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -250,6 +264,8 @@
             panel1.PerformLayout();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
+            panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -257,7 +273,6 @@
 
         private Panel panel1;
         private Label registerLabel;
-        private CheckBox saveChecksBox;
         private TextBox passFieldCheck;
         private TextBox LOGIN_TEXTBOX;
         private Button REGISTRATION_BUTTON;
@@ -271,5 +286,7 @@
         private Button Back_Button;
         private Label label1;
         private RichTextBox richTextBox1;
+        private CheckBox saveChecksBox;
+        private PictureBox pictureBox1;
     }
 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\wekol\\source\\repos\\new\\Register.csproj": {}
+    "C:\\Users\\wekol\\Source\\Repos\\WeKoL\\Register-Autorization-ClearMainMenu\\Register.csproj": {}
   },
   "projects": {
-    "C:\\Users\\wekol\\source\\repos\\new\\Register.csproj": {
+    "C:\\Users\\wekol\\Source\\Repos\\WeKoL\\Register-Autorization-ClearMainMenu\\Register.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\wekol\\source\\repos\\new\\Register.csproj",
+        "projectUniqueName": "C:\\Users\\wekol\\Source\\Repos\\WeKoL\\Register-Autorization-ClearMainMenu\\Register.csproj",
         "projectName": "Register",
-        "projectPath": "C:\\Users\\wekol\\source\\repos\\new\\Register.csproj",
+        "projectPath": "C:\\Users\\wekol\\Source\\Repos\\WeKoL\\Register-Autorization-ClearMainMenu\\Register.csproj",
         "packagesPath": "C:\\Users\\wekol\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\wekol\\source\\repos\\new\\obj\\",
+        "outputPath": "C:\\Users\\wekol\\Source\\Repos\\WeKoL\\Register-Autorization-ClearMainMenu\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
