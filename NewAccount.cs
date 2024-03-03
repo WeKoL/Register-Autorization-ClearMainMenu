@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace Register
 {
-    public partial class MainMenuForm : Form
+    public partial class NewAccount : Form
     {
-        public MainMenuForm()
+        public NewAccount()
         {
             InitializeComponent();
         }

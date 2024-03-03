@@ -1,3 +1,4 @@
+using KR_Michalev;
 using Microsoft.VisualBasic.ApplicationServices;
 using Microsoft.VisualBasic.Logging;
 using MySql.Data.MySqlClient;
@@ -183,8 +184,55 @@ namespace Register
                     }
                 }
                 this.Hide();
-                MainMenuForm mainMenuForm = new MainMenuForm();
-                mainMenuForm.Show();
+                MySqlCommand command1 = new MySqlCommand("SELECT * FROM `users` WHERE `login` = @lU AND `pass` = @pU AND `isNewUser` = 1", db.getConnection());
+                command1.Parameters.Add("@lU", MySqlDbType.VarChar).Value = loginUser;
+                command1.Parameters.Add("@pU", MySqlDbType.VarChar).Value = passUser;
+                MySqlDataAdapter adapter1 = new MySqlDataAdapter();
+                adapter1.SelectCommand = (command1);
+                DataTable table1 = new DataTable();
+                adapter1.Fill(table1);
+                bool isNewUser = false;
+                if(table1.Rows.Count > 0)
+                {
+                    isNewUser = true;
+                    NewAccount newAccount = new NewAccount();
+                    newAccount.Show();
+                }
+                else if(isNewUser == false)
+                {
+                    MySqlCommand command2 = new MySqlCommand("SELECT * FROM `users` WHERE `login` = @lU AND `pass` = @pU AND `isWarehouseWorker` = 1", db.getConnection());
+                    command2.Parameters.Add("@lU", MySqlDbType.VarChar).Value = loginUser;
+                    command2.Parameters.Add("@pU", MySqlDbType.VarChar).Value = passUser;
+                    MySqlDataAdapter adapter2 = new MySqlDataAdapter();
+                    adapter2.SelectCommand = (command2);
+                    DataTable table2 = new DataTable();
+                    adapter2.Fill(table2);
+                    bool isWarehouseWorker = false;
+                    if (table2.Rows.Count > 0)
+                    {
+                        isWarehouseWorker = true;
+                        WarehouseWorker warehouseWorker = new WarehouseWorker();
+                        warehouseWorker.Show();
+                    }
+                    else if(isWarehouseWorker == false) 
+                    {
+                        MySqlCommand command3 = new MySqlCommand("SELECT * FROM `users` WHERE `login` = @lU AND `pass` = @pU AND `isAdmin` = 1", db.getConnection());
+                        command3.Parameters.Add("@lU", MySqlDbType.VarChar).Value = loginUser;
+                        command3.Parameters.Add("@pU", MySqlDbType.VarChar).Value = passUser;
+                        MySqlDataAdapter adapter3 = new MySqlDataAdapter();
+                        adapter3.SelectCommand = (command3);
+                        DataTable table3 = new DataTable();
+                        adapter3.Fill(table3);
+                        bool isAdmin = false;
+                        if(table3.Rows.Count > 0)
+                        {
+                            isAdmin = true;
+                            AdminPanel adminpanel = new AdminPanel();
+                            adminpanel.Show();
+                        }
+                    }
+                }
+
             }
             else
             {

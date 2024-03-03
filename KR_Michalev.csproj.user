@@ -4,13 +4,19 @@
     <_LastSelectedProfileId>C:\Users\wekol\source\repos\File Manager App\Register\Properties\PublishProfiles\FolderProfile.pubxml</_LastSelectedProfileId>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Update="AdminPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="AutorizationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="MainMenuForm.cs">
+    <Compile Update="NewAccount.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="RegisterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="WarehouseWorker.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

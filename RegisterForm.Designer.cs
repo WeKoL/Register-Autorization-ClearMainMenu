@@ -193,6 +193,7 @@
             richTextBox1.Name = "richTextBox1";
             richTextBox1.Size = new Size(451, 843);
             richTextBox1.TabIndex = 1;
+            richTextBox1.ForeColor = System.Drawing.Color.LightGreen;
             richTextBox1.Text = resources.GetString("richTextBox1.Text");
             // 
             // label1

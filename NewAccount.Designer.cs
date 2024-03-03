@@ -1,6 +1,6 @@
 ﻿namespace Register
 {
-    partial class MainMenuForm
+    partial class NewAccount
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMenuForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewAccount));
             Exit_Button = new Button();
             Back_Button = new Button();
             label1 = new Label();
@@ -84,6 +84,7 @@
             richTextBox1.Name = "richTextBox1";
             richTextBox1.Size = new Size(451, 843);
             richTextBox1.TabIndex = 16;
+            richTextBox1.ForeColor = System.Drawing.Color.LightGreen;
             richTextBox1.Text = resources.GetString("richTextBox1.Text");
             // 
             // label2
