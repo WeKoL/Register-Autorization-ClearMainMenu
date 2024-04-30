@@ -129,7 +129,19 @@
 -add a new button that saves the login and password the next time you enter data.
 -add button, that back user to the AutorizationForm
   in a MainMenu and a RegisterForm
-</value>
+
+0.2 Alpha  ----- date update: 02.03.2024 -----
+
+-add an admin panel with the ability to change user rights,
+  including deleting them from the database
+-add blank form for warehouseworkers
+-fix registerform error message
+-add GIFs in AutorizationForm, NewAccount, RegisterForm
+
+0.3 Alpha ----- data update: 25.04.2024 -----
+
+-fix database( now use MySQL Workbench )
+-fix output message after enter uncorrect pass or login.</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

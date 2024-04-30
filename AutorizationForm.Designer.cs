@@ -190,6 +190,7 @@
             Name = "AutorizationForm";
             StartPosition = FormStartPosition.Manual;
             Text = "AutoRider";
+            WindowState = FormWindowState.Maximized;
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

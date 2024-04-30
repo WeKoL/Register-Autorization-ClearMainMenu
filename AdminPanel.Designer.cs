@@ -28,28 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             Exit_Button = new Button();
             Back_Button = new Button();
-            startSearch = new Button();
+            addButton_Clic = new Button();
+            saveButton_Clic = new Button();
+            deleteButton_Clic = new Button();
             dataGridView1 = new DataGridView();
-            label1 = new Label();
-            txtSearch = new TextBox();
             dataGridView2 = new DataGridView();
-            label2 = new Label();
+            delete = new Button();
+            save = new Button();
+            add = new Button();
+            button1 = new Button();
+            label1 = new Label();
             button2 = new Button();
-            deleteButton = new Button();
-            changeButton = new Button();
-            textBox1 = new TextBox();
-            textBox3 = new TextBox();
-            textBox2 = new TextBox();
-            textBox4 = new TextBox();
-            textBox5 = new TextBox();
-            login = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            label5 = new Label();
-            label6 = new Label();
-            panel1 = new Panel();
+            comboBox2 = new ComboBox();
+            label2 = new Label();
+            comboBox3 = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             SuspendLayout();
@@ -74,201 +70,150 @@
             Back_Button.UseVisualStyleBackColor = true;
             Back_Button.Click += Back_Button_Click1;
             // 
-            // startSearch
+            // addButton_Clic
             // 
-            startSearch.FlatStyle = FlatStyle.Flat;
-            startSearch.Font = new Font("Lucida Fax", 12F);
-            startSearch.Location = new Point(746, 17);
-            startSearch.Name = "startSearch";
-            startSearch.Size = new Size(89, 38);
-            startSearch.TabIndex = 16;
-            startSearch.Text = "Search";
-            startSearch.UseVisualStyleBackColor = true;
-            startSearch.Click += startSearch_Click;
+            addButton_Clic.Location = new Point(12, 427);
+            addButton_Clic.Name = "addButton_Clic";
+            addButton_Clic.Size = new Size(115, 64);
+            addButton_Clic.TabIndex = 16;
+            addButton_Clic.Text = "Добавить";
+            addButton_Clic.UseVisualStyleBackColor = true;
+            addButton_Clic.Click += addButton_Clic_Click;
+            // 
+            // saveButton_Clic
+            // 
+            saveButton_Clic.Location = new Point(133, 427);
+            saveButton_Clic.Name = "saveButton_Clic";
+            saveButton_Clic.Size = new Size(125, 64);
+            saveButton_Clic.TabIndex = 17;
+            saveButton_Clic.Text = "Сохранить";
+            saveButton_Clic.UseVisualStyleBackColor = true;
+            saveButton_Clic.Click += saveButton_Clic_Click;
+            // 
+            // deleteButton_Clic
+            // 
+            deleteButton_Clic.Location = new Point(264, 427);
+            deleteButton_Clic.Name = "deleteButton_Clic";
+            deleteButton_Clic.Size = new Size(127, 64);
+            deleteButton_Clic.TabIndex = 18;
+            deleteButton_Clic.Text = "Удалить";
+            deleteButton_Clic.UseVisualStyleBackColor = true;
+            deleteButton_Clic.Click += deleteButton_Clic_Click;
             // 
             // dataGridView1
             // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.AllowUserToResizeColumns = false;
             dataGridView1.AllowUserToResizeRows = false;
+            dataGridViewCellStyle5.BackColor = Color.Gainsboro;
+            dataGridViewCellStyle5.ForeColor = Color.Black;
+            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.BorderStyle = BorderStyle.Fixed3D;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Cursor = Cursors.Hand;
-            dataGridView1.Location = new Point(85, 65);
+            dataGridView1.Location = new Point(12, 12);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(648, 82);
-            dataGridView1.TabIndex = 17;
+            dataGridView1.Size = new Size(379, 409);
+            dataGridView1.TabIndex = 19;
+            // 
+            // dataGridView2
+            // 
+            dataGridView2.AllowUserToResizeColumns = false;
+            dataGridView2.AllowUserToResizeRows = false;
+            dataGridViewCellStyle6.BackColor = Color.White;
+            dataGridViewCellStyle6.ForeColor = Color.Black;
+            dataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView2.Location = new Point(469, 12);
+            dataGridView2.Name = "dataGridView2";
+            dataGridView2.Size = new Size(643, 409);
+            dataGridView2.TabIndex = 23;
+            // 
+            // delete
+            // 
+            delete.Location = new Point(916, 427);
+            delete.Name = "delete";
+            delete.Size = new Size(196, 64);
+            delete.TabIndex = 22;
+            delete.Text = "Удалить";
+            delete.UseVisualStyleBackColor = true;
+            delete.Click += delete_Click;
+            // 
+            // save
+            // 
+            save.Location = new Point(701, 427);
+            save.Name = "save";
+            save.Size = new Size(209, 64);
+            save.TabIndex = 21;
+            save.Text = "Сохранить";
+            save.UseVisualStyleBackColor = true;
+            save.Click += save_Click;
+            // 
+            // add
+            // 
+            add.Location = new Point(469, 427);
+            add.Name = "add";
+            add.Size = new Size(226, 64);
+            add.TabIndex = 20;
+            add.Text = "Добавить";
+            add.UseVisualStyleBackColor = true;
+            add.Click += add_Click;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(700, 503);
+            button1.Name = "button1";
+            button1.Size = new Size(92, 23);
+            button1.TabIndex = 35;
+            button1.Text = "Сортировать";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Lucida Fax", 12F);
-            label1.Location = new Point(12, 24);
+            label1.Location = new Point(472, 506);
             label1.Name = "label1";
-            label1.Size = new Size(67, 18);
-            label1.TabIndex = 18;
-            label1.Text = "Search:";
+            label1.Size = new Size(95, 15);
+            label1.TabIndex = 33;
+            label1.Text = "Сортировать по";
             // 
-            // txtSearch
+            // button2
             // 
-            txtSearch.Font = new Font("Lucida Fax", 12F);
-            txtSearch.Location = new Point(85, 24);
-            txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(648, 26);
-            txtSearch.TabIndex = 19;
-            txtSearch.KeyPress += txtSearch_KeyPress;
+            button2.Location = new Point(240, 502);
+            button2.Name = "button2";
+            button2.Size = new Size(92, 23);
+            button2.TabIndex = 38;
+            button2.Text = "Сортировать";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
-            // dataGridView2
+            // comboBox2
             // 
-            dataGridView2.AllowUserToAddRows = false;
-            dataGridView2.AllowUserToDeleteRows = false;
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(929, 65);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.Size = new Size(339, 116);
-            dataGridView2.TabIndex = 22;
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Items.AddRange(new object[] { "id", "login", "pass", "acess_level" });
+            comboBox2.Location = new Point(113, 502);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(121, 23);
+            comboBox2.TabIndex = 37;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Lucida Fax", 12F);
-            label2.Location = new Point(929, 31);
+            label2.Location = new Point(12, 505);
             label2.Name = "label2";
-            label2.Size = new Size(82, 18);
-            label2.TabIndex = 23;
-            label2.Text = "All users:";
+            label2.Size = new Size(95, 15);
+            label2.TabIndex = 36;
+            label2.Text = "Сортировать по";
             // 
-            // button2
+            // comboBox3
             // 
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Lucida Fax", 12F);
-            button2.Location = new Point(1017, 21);
-            button2.Name = "button2";
-            button2.Size = new Size(110, 38);
-            button2.TabIndex = 25;
-            button2.Text = "Отобразить";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
-            // 
-            // deleteButton
-            // 
-            deleteButton.Cursor = Cursors.Hand;
-            deleteButton.Font = new Font("Lucida Fax", 12F);
-            deleteButton.Location = new Point(746, 65);
-            deleteButton.Name = "deleteButton";
-            deleteButton.Size = new Size(89, 55);
-            deleteButton.TabIndex = 21;
-            deleteButton.Text = "Delete";
-            deleteButton.UseVisualStyleBackColor = true;
-            // 
-            // changeButton
-            // 
-            changeButton.Cursor = Cursors.Hand;
-            changeButton.Font = new Font("Lucida Fax", 12F);
-            changeButton.Location = new Point(480, 165);
-            changeButton.Name = "changeButton";
-            changeButton.Size = new Size(89, 55);
-            changeButton.TabIndex = 20;
-            changeButton.Text = "Сhange";
-            changeButton.UseVisualStyleBackColor = true;
-            // 
-            // textBox1
-            // 
-            textBox1.Font = new Font("Lucida Fax", 12F);
-            textBox1.Location = new Point(275, 165);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(179, 26);
-            textBox1.TabIndex = 26;
-            // 
-            // textBox3
-            // 
-            textBox3.Font = new Font("Lucida Fax", 12F);
-            textBox3.Location = new Point(275, 229);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(51, 26);
-            textBox3.TabIndex = 29;
-            // 
-            // textBox2
-            // 
-            textBox2.Font = new Font("Lucida Fax", 12F);
-            textBox2.Location = new Point(275, 197);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(179, 26);
-            textBox2.TabIndex = 30;
-            // 
-            // textBox4
-            // 
-            textBox4.Font = new Font("Lucida Fax", 12F);
-            textBox4.Location = new Point(275, 261);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(51, 26);
-            textBox4.TabIndex = 31;
-            // 
-            // textBox5
-            // 
-            textBox5.Font = new Font("Lucida Fax", 12F);
-            textBox5.Location = new Point(275, 293);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(51, 26);
-            textBox5.TabIndex = 32;
-            // 
-            // login
-            // 
-            login.AutoSize = true;
-            login.Font = new Font("Lucida Fax", 12F);
-            login.Location = new Point(98, 170);
-            login.Name = "login";
-            login.Size = new Size(49, 18);
-            login.TabIndex = 33;
-            login.Text = "login";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Lucida Fax", 12F);
-            label3.Location = new Point(98, 197);
-            label3.Name = "label3";
-            label3.Size = new Size(44, 18);
-            label3.TabIndex = 34;
-            label3.Text = "pass";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Lucida Fax", 12F);
-            label4.Location = new Point(98, 229);
-            label4.Name = "label4";
-            label4.Size = new Size(92, 18);
-            label4.TabIndex = 35;
-            label4.Text = "isNewUser";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Lucida Fax", 12F);
-            label5.Location = new Point(98, 264);
-            label5.Name = "label5";
-            label5.Size = new Size(168, 18);
-            label5.TabIndex = 36;
-            label5.Text = "isWarehouseWorker";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Lucida Fax", 12F);
-            label6.Location = new Point(98, 296);
-            label6.Name = "label6";
-            label6.Size = new Size(75, 18);
-            label6.TabIndex = 37;
-            label6.Text = "isAdmin";
-            // 
-            // panel1
-            // 
-            panel1.BackColor = SystemColors.ButtonFace;
-            panel1.Location = new Point(85, 153);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(530, 225);
-            panel1.TabIndex = 38;
+            comboBox3.FormattingEnabled = true;
+            comboBox3.Items.AddRange(new object[] { "id", "name_resourse", "price", "weight" });
+            comboBox3.Location = new Point(573, 503);
+            comboBox3.Name = "comboBox3";
+            comboBox3.Size = new Size(121, 23);
+            comboBox3.TabIndex = 39;
             // 
             // AdminPanel
             // 
@@ -277,32 +222,27 @@
             AutoSize = true;
             BackColor = SystemColors.ButtonHighlight;
             ClientSize = new Size(1280, 1001);
-            Controls.Add(login);
-            Controls.Add(label6);
-            Controls.Add(label5);
-            Controls.Add(label4);
-            Controls.Add(label3);
-            Controls.Add(textBox5);
-            Controls.Add(textBox4);
-            Controls.Add(textBox2);
-            Controls.Add(textBox3);
-            Controls.Add(textBox1);
+            Controls.Add(comboBox3);
             Controls.Add(button2);
+            Controls.Add(comboBox2);
             Controls.Add(label2);
-            Controls.Add(dataGridView2);
-            Controls.Add(deleteButton);
-            Controls.Add(changeButton);
-            Controls.Add(txtSearch);
+            Controls.Add(button1);
             Controls.Add(label1);
+            Controls.Add(dataGridView2);
+            Controls.Add(delete);
+            Controls.Add(save);
+            Controls.Add(add);
             Controls.Add(dataGridView1);
-            Controls.Add(startSearch);
+            Controls.Add(deleteButton_Clic);
+            Controls.Add(saveButton_Clic);
+            Controls.Add(addButton_Clic);
             Controls.Add(Exit_Button);
             Controls.Add(Back_Button);
-            Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "AdminPanel";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AdminPanel";
+            WindowState = FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ResumeLayout(false);
@@ -313,25 +253,19 @@
 
         private Button Exit_Button;
         private Button Back_Button;
-        private Button startSearch;
+        private Button addButton_Clic;
+        private Button saveButton_Clic;
         private DataGridView dataGridView1;
-        private Label label1;
-        private TextBox txtSearch;
+        private Button deleteButton_Clic;
         private DataGridView dataGridView2;
-        private Label label2;
+        private Button delete;
+        private Button save;
+        private Button add;
+        private Button button1;
+        private Label label1;
         private Button button2;
-        private Button deleteButton;
-        private Button changeButton;
-        private TextBox textBox1;
-        private TextBox textBox3;
-        private TextBox textBox2;
-        private TextBox textBox4;
-        private TextBox textBox5;
-        private Label login;
-        private Label label3;
-        private Label label4;
-        private Label label5;
-        private Label label6;
-        private Panel panel1;
+        private ComboBox comboBox2;
+        private Label label2;
+        private ComboBox comboBox3;
     }
 }
