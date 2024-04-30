@@ -19,7 +19,7 @@ namespace Register
             this.InitializeComponent();
             String pass;
             string login;
-            
+
             loginField.GotFocus += textBox1_GotFocus;
             loginField.MouseUp += textBox1_MouseUp;
             loginField.Leave += textBox1_Leave;
@@ -150,7 +150,7 @@ namespace Register
             adapter.SelectCommand = command;
             adapter.Fill(table);
 
-            if (table.Rows.Count > 0 && loginUser.Length >= 3 && passUser.Length > 6)
+            if (table.Rows.Count > 0 && loginUser.Length > 2 && passUser.Length > 5)
             {
                 MessageBox.Show("Успех авторизации");
                 if (checkBox3.Checked)
@@ -184,51 +184,53 @@ namespace Register
                     }
                 }
                 this.Hide();
-                MySqlCommand command1 = new MySqlCommand("SELECT * FROM `users` WHERE `login` = @lU AND `pass` = @pU AND `isNewUser` = 1", db.getConnection());
+                MySqlCommand command1 = new MySqlCommand("SELECT * FROM `users` WHERE `login` = @lU AND `pass` = @pU AND `acess_level` = 3", db.getConnection());
                 command1.Parameters.Add("@lU", MySqlDbType.VarChar).Value = loginUser;
                 command1.Parameters.Add("@pU", MySqlDbType.VarChar).Value = passUser;
                 MySqlDataAdapter adapter1 = new MySqlDataAdapter();
                 adapter1.SelectCommand = (command1);
                 DataTable table1 = new DataTable();
                 adapter1.Fill(table1);
-                bool isNewUser = false;
-                if(table1.Rows.Count > 0)
+
+                bool isAdmin = false;
+                if (table1.Rows.Count > 0)
                 {
-                    isNewUser = true;
-                    NewAccount newAccount = new NewAccount();
-                    newAccount.Show();
+                    isAdmin = true;
+                    AdminPanel adminpanel = new AdminPanel();
+                    adminpanel.Show();
+
                 }
-                else if(isNewUser == false)
+                else if (isAdmin == false)
                 {
-                    MySqlCommand command2 = new MySqlCommand("SELECT * FROM `users` WHERE `login` = @lU AND `pass` = @pU AND `isWarehouseWorker` = 1", db.getConnection());
+                    MySqlCommand command2 = new MySqlCommand("SELECT * FROM `users` WHERE `login` = @lU AND `pass` = @pU AND `acess_level` = 2", db.getConnection());
                     command2.Parameters.Add("@lU", MySqlDbType.VarChar).Value = loginUser;
                     command2.Parameters.Add("@pU", MySqlDbType.VarChar).Value = passUser;
                     MySqlDataAdapter adapter2 = new MySqlDataAdapter();
                     adapter2.SelectCommand = (command2);
                     DataTable table2 = new DataTable();
                     adapter2.Fill(table2);
-                    bool isWarehouseWorker = false;
+                    bool isWorker = false;
                     if (table2.Rows.Count > 0)
                     {
-                        isWarehouseWorker = true;
+                        isWorker = true;
                         WarehouseWorker warehouseWorker = new WarehouseWorker();
                         warehouseWorker.Show();
                     }
-                    else if(isWarehouseWorker == false) 
+                    else if (isWorker == false)
                     {
-                        MySqlCommand command3 = new MySqlCommand("SELECT * FROM `users` WHERE `login` = @lU AND `pass` = @pU AND `isAdmin` = 1", db.getConnection());
+                        MySqlCommand command3 = new MySqlCommand("SELECT * FROM `users` WHERE `login` = @lU AND `pass` = @pU AND `acess_level` = 1", db.getConnection());
                         command3.Parameters.Add("@lU", MySqlDbType.VarChar).Value = loginUser;
                         command3.Parameters.Add("@pU", MySqlDbType.VarChar).Value = passUser;
                         MySqlDataAdapter adapter3 = new MySqlDataAdapter();
                         adapter3.SelectCommand = (command3);
                         DataTable table3 = new DataTable();
                         adapter3.Fill(table3);
-                        bool isAdmin = false;
-                        if(table3.Rows.Count > 0)
+                        bool isUser = false;
+                        if (table3.Rows.Count > 0)
                         {
-                            isAdmin = true;
-                            AdminPanel adminpanel = new AdminPanel();
-                            adminpanel.Show();
+                            isUser = true;
+                            NewAccount newAccount = new NewAccount();
+                            newAccount.Show();
                         }
                     }
                 }

@@ -205,7 +205,7 @@ namespace Register
                 MessageBox.Show("Введите логин!");
                 return;
             }
-            if (LOGIN_TEXTBOX.Text.Length <= 3)
+            if (LOGIN_TEXTBOX.Text.Length <= 2)
             {
                 MessageBox.Show("Длина логина менее 3 символов");
                 return;
@@ -215,9 +215,9 @@ namespace Register
                 MessageBox.Show("Введите пороль!");
                 return;
             }
-            if (PASS_WORD_TEXTBOX.Text.Length <= 6)
+            if (PASS_WORD_TEXTBOX.Text.Length <= 5)
             {
-                MessageBox.Show("Длина логина менее 3 символов");
+                MessageBox.Show("Длина пороля менее 6 символов");
                 return;
             }
             if (isUserExists())
@@ -317,6 +317,16 @@ namespace Register
             this.Hide();
             AutorizationForm autorizationForm = new AutorizationForm();
             autorizationForm.Show();
+        }
+
+        private void maxSymbolsLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -1738,7 +1738,7 @@
 </value>
   </data>
   <data name="richTextBox1.Text" xml:space="preserve">
-    <value>0.1 Alpha  ----- date update: 26.03.2024 -----
+    <value>0.1 Alpha  ----- date update: 26.02.2024 -----
 
 -add a RegisterForm and a AutorizationForm menu by users.
 -add a method colorChangeChanges, which change the color
@@ -1749,6 +1749,26 @@
 -add a new button that saves the login and password the next time you enter data.
 -add button, that back user to the AutorizationForm
   in a MainMenu and a RegisterForm
+
+0.2 Alpha  ----- date update: 02.03.2024 -----
+
+-add an admin panel with the ability to change user rights,
+  including deleting them from the database
+-add blank form for warehouseworkers
+-fix registerform error message
+-add GIFs in AutorizationForm, NewAccount, RegisterForm
+
+0.3 Alpha ----- data update: 25.04.2024 -----
+
+-fix database( now use MySQL Workbench )
+-fix output message after enter uncorrect pass or login.
+
+0.4 Alpha ----- data update: 30.04.2024 -----
+-add table with users and resourse
+-add sort buttons for these tables
+-using fullscrin menu now
+-add some gifs
+-complete?
 </value>
   </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

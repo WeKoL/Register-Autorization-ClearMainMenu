@@ -80,12 +80,13 @@
             // 
             // richTextBox1
             // 
+            richTextBox1.ForeColor = Color.LightGreen;
             richTextBox1.Location = new Point(497, 50);
             richTextBox1.Name = "richTextBox1";
             richTextBox1.Size = new Size(451, 843);
             richTextBox1.TabIndex = 16;
-            richTextBox1.ForeColor = System.Drawing.Color.LightGreen;
             richTextBox1.Text = resources.GetString("richTextBox1.Text");
+            richTextBox1.TextChanged += richTextBox1_TextChanged;
             // 
             // label2
             // 
@@ -97,7 +98,7 @@
             label2.TabIndex = 17;
             label2.Text = "Список обновлений";
             // 
-            // MainMenuForm
+            // NewAccount
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -111,9 +112,10 @@
             Controls.Add(Back_Button);
             Controls.Add(Exit_Button);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "MainMenuForm";
+            Name = "NewAccount";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "MainMenuForm";
+            WindowState = FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();

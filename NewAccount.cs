@@ -27,5 +27,10 @@ namespace Register
             AutorizationForm autorizationForm = new AutorizationForm();
             autorizationForm.Show();
         }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

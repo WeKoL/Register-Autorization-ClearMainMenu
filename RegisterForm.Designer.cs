@@ -43,9 +43,9 @@
             richTextBox1 = new RichTextBox();
             label1 = new Label();
             panel2 = new Panel();
+            pictureBox1 = new PictureBox();
             Exit_Button = new Button();
             Back_Button = new Button();
-            pictureBox1 = new PictureBox();
             panel1.SuspendLayout();
             panel3.SuspendLayout();
             panel2.SuspendLayout();
@@ -110,6 +110,7 @@
             maxSymbolsLabel.Size = new Size(118, 15);
             maxSymbolsLabel.TabIndex = 9;
             maxSymbolsLabel.Text = "Больше 6 символов";
+            maxSymbolsLabel.Click += maxSymbolsLabel_Click;
             // 
             // registerLabel
             // 
@@ -189,12 +190,13 @@
             // 
             // richTextBox1
             // 
+            richTextBox1.ForeColor = Color.LightGreen;
             richTextBox1.Location = new Point(17, 40);
             richTextBox1.Name = "richTextBox1";
             richTextBox1.Size = new Size(451, 843);
             richTextBox1.TabIndex = 1;
-            richTextBox1.ForeColor = System.Drawing.Color.LightGreen;
             richTextBox1.Text = resources.GetString("richTextBox1.Text");
+            richTextBox1.TextChanged += richTextBox1_TextChanged;
             // 
             // label1
             // 
@@ -214,6 +216,16 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(480, 900);
             panel2.TabIndex = 9;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(180, 600);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(300, 300);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 15;
+            pictureBox1.TabStop = false;
             // 
             // Exit_Button
             // 
@@ -235,16 +247,6 @@
             Back_Button.UseVisualStyleBackColor = true;
             Back_Button.Click += Back_Button_Click;
             // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(180, 600);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(300, 300);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 15;
-            pictureBox1.TabStop = false;
-            // 
             // RegisterForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -261,6 +263,7 @@
             Name = "RegisterForm";
             StartPosition = FormStartPosition.Manual;
             Text = "RegisterForm";
+            WindowState = FormWindowState.Maximized;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel3.ResumeLayout(false);

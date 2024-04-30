@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
 
 namespace SqlDB
 {
     class DB
     {
-        MySqlConnection connection = new MySqlConnection("" +
-            "server=localhost;port=3306;username=root;password=root;database=users");
+        MySqlConnection connection = new MySqlConnection("server=localhost;user=root;database=workc;port=3306;password=root");
         public void openConnection()
         {
             if(connection.State == System.Data.ConnectionState.Closed)

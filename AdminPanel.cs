@@ -13,15 +13,59 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Xml.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 namespace KR_Michalev
 {
     public partial class AdminPanel : Form
     {
+        DataSet dsUsers;
+        MySqlDataAdapter adapterUsers;
+        DataSet dsResourse;
+        MySqlDataAdapter adapterResourse;
+        MySqlCommandBuilder commandBuilder;
+        string connectionString = @"server=localhost;user=root;database=workc;port=3306;password=root";
+        string sqlUsers = "SELECT * FROM Users";
+        string sqlResourse = "SELECT * FROM Resourse";
+
         public AdminPanel()
         {
             InitializeComponent();
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.AllowUserToAddRows = false;
 
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+                adapterUsers = new MySqlDataAdapter(sqlUsers, connection);
+
+                dsUsers = new DataSet();
+                adapterUsers.Fill(dsUsers);
+                dataGridView1.DataSource = dsUsers.Tables[0];
+                // делаем недоступным столбец id для изменения
+                dataGridView1.Columns["id"].ReadOnly = true;
+            }
+
+            //
+
+            dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView2.AllowUserToAddRows = false;
+
+            string sqlResourse = "SELECT * FROM resourse";
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+                adapterResourse = new MySqlDataAdapter(sqlResourse, connection);
+
+                dsResourse = new DataSet();
+                adapterResourse.Fill(dsResourse);
+                dataGridView2.DataSource = dsResourse.Tables[0];
+                // делаем недоступным столбец id для изменения
+                dataGridView2.Columns["id"].ReadOnly = true;
+            }
         }
+
+        // Закрыть окно/прикрыть окно
         public void Exit_Button_Click1(object sender, EventArgs e)
         {
             Application.Exit();
@@ -33,45 +77,90 @@ namespace KR_Michalev
             autorizationForm.Show();
         }
 
-        private void startSearch_Click(object sender, EventArgs e)
+
+        // кнопка добавления
+        private void addButton_Clic_Click(object sender, EventArgs e)
         {
-            DB db = new DB();
-
-            DataTable table = new DataTable();
-
-            MySqlDataAdapter adapter = new MySqlDataAdapter();
-            string query = "SELECT * FROM `users` WHERE `ID` = @IDuser OR `login` = @lg";
-            MySqlCommand command = new MySqlCommand(query, db.getConnection());
-            command.Parameters.AddWithValue("IDuser", txtSearch.Text);
-            command.Parameters.AddWithValue("lg", txtSearch.Text);
-            adapter.SelectCommand = command;
-            adapter.Fill(table);
-            dataGridView1.DataSource = table;
-            dataGridView1.Columns["Id"].ReadOnly = true;
+            DataRow row = dsUsers.Tables[0].NewRow(); // добавляем новую строку в DataTable
+            dsUsers.Tables[0].Rows.Add(row);
         }
-        
 
-        private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
+        // кнопка сохранения
+        private void saveButton_Clic_Click(object sender, EventArgs e)
         {
-            if (e.KeyChar == (char)13)
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
-                startSearch.PerformClick();
+                connection.Open();
+                adapterUsers = new MySqlDataAdapter(sqlUsers, connection);
+                commandBuilder = new MySqlCommandBuilder(adapterUsers);
+                adapterUsers.InsertCommand = new MySqlCommand("sp_CreateUser", connection);
+                adapterUsers.InsertCommand.CommandType = CommandType.StoredProcedure;
+                adapterUsers.InsertCommand.Parameters.Add(new MySqlParameter("@login", MySqlDbType.VarChar, 50, "Логин"));
+                adapterUsers.InsertCommand.Parameters.Add(new MySqlParameter("@pass", MySqlDbType.VarChar, 0, "Пороль"));
+                adapterUsers.InsertCommand.Parameters.Add(new MySqlParameter("@acess_level", MySqlDbType.Int32, 0, "Уровень"));
+
+
+                MySqlParameter parameter = adapterUsers.InsertCommand.Parameters.Add("@id", MySqlDbType.Int32, 0, "id");
+                parameter.Direction = ParameterDirection.Output;
+
+                adapterUsers.Update(dsUsers);
             }
         }
-        private void button2_Click(object sender, EventArgs e)
+        // кнопка удаления
+        private void deleteButton_Clic_Click(object sender, EventArgs e)
         {
-            DB db = new DB();
-
-            DataTable table = new DataTable();
-
-            MySqlDataAdapter adapter = new MySqlDataAdapter();
-
-            MySqlCommand command = new MySqlCommand("SELECT * FROM `users`", db.getConnection());
-            adapter.SelectCommand = command;
-            adapter.Fill(table);
-            dataGridView2.DataSource = table;
-            dataGridView2.Columns["Id"].ReadOnly = true;
+            // удаляем выделенные строки из dataGridView1
+            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+            {
+                dataGridView1.Rows.Remove(row);
+            }
         }
 
+
+        private void add_Click(object sender, EventArgs e)
+        {
+            DataRow row = dsResourse.Tables[0].NewRow(); // добавляем новую строку в DataTable
+            dsResourse.Tables[0].Rows.Add(row);
+        }
+
+        private void save_Click(object sender, EventArgs e)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+                adapterResourse = new MySqlDataAdapter(sqlResourse, connection);
+                commandBuilder = new MySqlCommandBuilder(adapterResourse);
+                adapterResourse.InsertCommand = new MySqlCommand("sp_CreateResourse", connection);
+                adapterResourse.InsertCommand.CommandType = CommandType.StoredProcedure;
+                adapterResourse.InsertCommand.Parameters.Add(new MySqlParameter("@name_resourse", MySqlDbType.VarChar, 50, "Наименование"));
+                adapterResourse.InsertCommand.Parameters.Add(new MySqlParameter("@price", MySqlDbType.VarChar, 0, "Цена"));
+                adapterResourse.InsertCommand.Parameters.Add(new MySqlParameter("@weight", MySqlDbType.Int32, 0, "Вес"));
+
+
+                MySqlParameter parameter = adapterResourse.InsertCommand.Parameters.Add("@id", MySqlDbType.Int32, 0, "id");
+                parameter.Direction = ParameterDirection.Output;
+
+                adapterResourse.Update(dsResourse);
+            }
+        }
+
+        private void delete_Click(object sender, EventArgs e)
+        {
+            // удаляем выделенные строки из dataGridView1
+            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+            {
+                dataGridView1.Rows.Remove(row);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            dataGridView2.Sort(dataGridView2.Columns[comboBox3.Text], ListSortDirection.Ascending);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Sort(dataGridView1.Columns[comboBox2.Text], ListSortDirection.Ascending);
+        }
     }
 }
